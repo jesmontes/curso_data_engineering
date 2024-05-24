@@ -18,7 +18,7 @@ sources:
     tables:
 
       - name: budget
-        loaded_at_field: _fivetran_synced
+        # loaded_at_field: _fivetran_synced
         columns:
           - name: _row
           - name: product_id

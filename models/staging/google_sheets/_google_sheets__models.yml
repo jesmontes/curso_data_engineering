@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_google_sheets__budget
+    columns:
+          - name: _row
+          - name: product_id
+          - name: quantity
+          - name: month
+          - name: _fivetran_synced
