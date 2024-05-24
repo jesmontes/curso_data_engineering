@@ -15,7 +15,7 @@ renamed_casted AS (
           , promo_id
           , status
           , _fivetran_deleted
-          , _fivetran_synced 
+          , _fivetran_synced AS date_load
     FROM src_promos
     )
 

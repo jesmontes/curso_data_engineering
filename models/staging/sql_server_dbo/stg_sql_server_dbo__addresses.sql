@@ -17,7 +17,7 @@ renamed_casted AS (
             , state
             , zipcode
             , _fivetran_deleted
-            , _fivetran_synced
+            , _fivetran_synced AS date_load
     FROM src_addresses
     )
 

@@ -21,7 +21,7 @@ renamed_casted AS (
           , updated_at
           , user_id
           , _fivetran_deleted
-          , _fivetran_synced  
+          , _fivetran_synced  AS date_load
     FROM src_users
     )
 

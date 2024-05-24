@@ -7,4 +7,4 @@ models:
           - name: product_id
           - name: quantity
           - name: month
-          - name: _fivetran_synced
+          - name: DATE_LOAD

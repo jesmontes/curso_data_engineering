@@ -9,7 +9,7 @@ models:
           - name: state
           - name: zipcode
           - name: _fivetran_deleted
-          - name: _fivetran_synced
+          - name: DATE_LOAD
   - name: stg_sql_server_dbo__events
     columns: 
           - name: event_id
@@ -21,7 +21,7 @@ models:
           - name: session_id
           - name: user_id
           - name: _fivetran_deleted
-          - name: _fivetran_synced
+          - name: DATE_LOAD
   - name: stg_sql_server_dbo__orders
     columns: 
           - name: address_id
@@ -38,14 +38,14 @@ models:
           - name: tracking_id
           - name: user_id
           - name: _fivetran_deleted
-          - name: _fivetran_synced  
+          - name: DATE_LOAD  
   - name: stg_sql_server_dbo__order_items
     columns:     
           - name: order_id
           - name: product_id
           - name: quantity
           - name: _fivetran_deleted
-          - name: _fivetran_synced  
+          - name: DATE_LOAD  
   - name: stg_sql_server_dbo__products
     columns:     
           - name: inventory
@@ -53,14 +53,14 @@ models:
           - name: name
           - name: price
           - name: _fivetran_deleted
-          - name: _fivetran_synced 
+          - name: DATE_LOAD 
   - name: stg_sql_server_dbo__promos
     columns: 
           - name: discount
           - name: promo_id
           - name: status
           - name: _fivetran_deleted
-          - name: _fivetran_synced 
+          - name: DATE_LOAD 
   - name: stg_sql_server_dbo__users
     columns: 
           - name: address_id
@@ -73,4 +73,4 @@ models:
           - name: updated_at
           - name: user_id
           - name: _fivetran_deleted
-          - name: _fivetran_synced  
+          - name: DATE_LOAD  
