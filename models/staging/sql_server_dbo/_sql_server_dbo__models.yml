@@ -4,6 +4,11 @@ models:
   - name: stg_sql_server_dbo__addresses
     columns:
           - name: address
+            tests:
+            - not_null
+            data_type: text
+            constraints:
+              - type: not_null
           - name: address_id
           - name: country
           - name: state
