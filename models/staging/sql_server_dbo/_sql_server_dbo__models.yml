@@ -1,0 +1,81 @@
+version: 2
+
+models:
+  - name: stg_sql_server_dbo__addresses
+    columns:
+          - name: address
+            tests:
+            - not_null
+            data_type: text
+            constraints:
+              - type: not_null
+          - name: address_id
+          - name: country
+          - name: state
+          - name: zipcode
+          - name: _fivetran_deleted
+          - name: DATE_LOAD
+  - name: stg_sql_server_dbo__events
+    columns: 
+          - name: event_id
+          - name: created_at
+          - name: event_type
+          - name: order_id
+          - name: page_url
+          - name: product_id
+          - name: session_id
+          - name: user_id
+          - name: _fivetran_deleted
+          - name: DATE_LOAD
+  - name: stg_sql_server_dbo__orders
+    columns: 
+          - name: address_id
+          - name: created_at
+          - name: delivered_at
+          - name: estimated_delivery_at
+          - name: order_cost
+          - name: order_id
+          - name: order_total
+          - name: promo_id
+          - name: shipping_cost
+          - name: shipping_service
+          - name: status
+          - name: tracking_id
+          - name: user_id
+          - name: _fivetran_deleted
+          - name: DATE_LOAD  
+  - name: stg_sql_server_dbo__order_items
+    columns:     
+          - name: order_id
+          - name: product_id
+          - name: quantity
+          - name: _fivetran_deleted
+          - name: DATE_LOAD  
+  - name: stg_sql_server_dbo__products
+    columns:     
+          - name: inventory
+          - name: product_id
+          - name: name
+          - name: price
+          - name: _fivetran_deleted
+          - name: DATE_LOAD 
+  - name: stg_sql_server_dbo__promos
+    columns: 
+          - name: discount
+          - name: promo_id
+          - name: status
+          - name: _fivetran_deleted
+          - name: DATE_LOAD 
+  - name: stg_sql_server_dbo__users
+    columns: 
+          - name: address_id
+          - name: created_at
+          - name: email
+          - name: first_name
+          - name: last_name
+          - name: phone_number
+          - name: total_orders
+          - name: updated_at
+          - name: user_id
+          - name: _fivetran_deleted
+          - name: DATE_LOAD  

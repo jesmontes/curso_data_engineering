@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_google_sheets__budget
+    config:
+        contract:
+          enforced: true
+    description: >
+      descripcion de prueba
+    columns:
+          - name: _row
+            tests:
+            - not_null
+            data_type: number
+            constraints:
+              - type: not_null
+            description: >
+              descripcion prueba
+          - name: product_id
+            tests:
+            - not_null
+            data_type: varchar
+            constraints:
+              - type: not_null
+          - name: quantity
+            tests:
+            - not_null
+            data_type: number
+            constraints:
+              - type: not_null
+          - name: month
+            # tests:
+            # - not_null
+            data_type: date
+            constraints:
+              - type: not_null
+          - name: DATE_LOAD
+            tests:
+            - not_null
+            data_type: timestamp_tz
+            constraints:
+              - type: not_null
