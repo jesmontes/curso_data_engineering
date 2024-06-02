@@ -11,10 +11,10 @@ renamed_casted AS (
         ,user_id
         ,NULLIF(product_id,'') AS promo_id
         ,session_id
-        ,CONVERT_TIMEZONE('UTC',created_at) AS created_at_utc
+        ,{{convert_date_timezone('created_at')}}        
         ,NULLIF(order_id,'') AS order_id
         ,COALESCE(_fivetran_deleted,false) as _fivetran_deleted
-        ,convert_timezone('UTC',_fivetran_synced) AS _fivetran_synced_utc 
+        ,{{convert_date_timezone('_fivetran_synced')}}       
     FROM src_events
     )
 

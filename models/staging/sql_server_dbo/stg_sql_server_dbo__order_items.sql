@@ -9,7 +9,7 @@ renamed_casted AS (
         ,product_id
         ,quantity
         ,COALESCE(_fivetran_deleted, false) AS _fivetran_deleted
-        ,convert_timezone('UTC',_fivetran_synced) AS _fivetran_synced_utc
+        ,{{convert_date_timezone('_fivetran_synced')}}
     FROM src_order_items
     )
 

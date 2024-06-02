@@ -31,7 +31,7 @@ WITH src_promos AS (
                         END AS status_id,
                         --status AS status_description,
                         COALESCE(_fivetran_deleted, false) AS _fivetran_deleted,
-                        CONVERT_TIMEZONE('UTC',_fivetran_synced) AS _fivetran_synced
+                        {{convert_date_timezone('_fivetran_synced')}}
                     FROM src_con_no_promo
     )
 

@@ -5,7 +5,8 @@ WITH int_date AS (
 )
 
 SELECT 
-    DATE_DAY AS DATE_ID,
+--TODO truncar horas y minutos y dejarlos a cero? por si en el futuro quieren hacerlo a minuto
+    DATE_DAY::timestamp AS DATE_ID,
     DAY_OF_WEEK,
     DAY_OF_WEEK_NAME,
     DAY_OF_MONTH,
