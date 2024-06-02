@@ -1,0 +1,13 @@
+
+version: 2
+
+models:
+  - name: stg_sql_server_dbo__shipping_service
+    columns:
+          - name: shipping_service_id
+            tests:
+            - not_null
+          - name: shipping_service
+            tests:
+            - not_null
+        

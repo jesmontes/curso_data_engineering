@@ -12,9 +12,7 @@ WITH src_promos AS (
 status AS (
     SELECT 
         DISTINCT
-            CASE WHEN status = 'active' THEN 0
-            ELSE 1
-            END AS status_id,
+            md5(status) AS status_promo_id,
         status 
     FROM src_promos
 )

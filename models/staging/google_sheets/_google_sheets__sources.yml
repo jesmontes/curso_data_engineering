@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: google_sheets
+    database: alumno27_dev_bronze_db
+    tables:
+      - name: budget
+        columns:
+          - name: _row
+            data_type: number
+          - name: quantity
+            data_type: number
+          - name: month
+            data_type: date
+          - name: product_id
+            data_type: varchar
+          - name: _fivetran_synced
+            data_type: timestamp_tz
