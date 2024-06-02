@@ -24,7 +24,7 @@ WITH src_orders AS (
             md5(status) AS status_id,
             --Para casos de documentacion y problemas de busqueda,se puede valorar dejar descripcion y sea mas facil localizarlo
             --status,
-            tracking_id,
+            tracking_id, --TODO poner vacios a null
             user_id,
             COALESCE(_fivetran_deleted, false) AS _fivetran_deleted,
             convert_timezone('UTC',_fivetran_synced) AS _fivetran_synced_utc

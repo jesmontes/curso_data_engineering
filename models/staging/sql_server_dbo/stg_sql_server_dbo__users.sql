@@ -9,7 +9,7 @@ WITH src_users AS (
     ),
 src_orders AS (
     SELECT * 
-    FROM {{ source('sql_server_dbo', 'orders') }}
+    FROM {{ ref('base_sql_server_dbo__orders') }}
     ),
 total_orders AS (
     SELECT  user_id,
