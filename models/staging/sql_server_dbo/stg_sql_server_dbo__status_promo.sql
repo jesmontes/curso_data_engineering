@@ -6,7 +6,7 @@
 
 WITH src_promos AS (
     SELECT * 
-    FROM {{ source('sql_server_dbo', 'promos') }}
+    FROM {{ ref('stg_sql_server_dbo__promos') }}
     ),
 
 status AS (
