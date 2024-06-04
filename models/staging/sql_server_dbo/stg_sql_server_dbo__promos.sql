@@ -31,7 +31,7 @@ WITH src_promos AS (
                         /*CASE WHEN status = 'active' THEN 0
                             ELSE 1
                         END AS status_id,*/
-                        --status AS status_description,
+                        status,
                         COALESCE(_fivetran_deleted, false) AS _fivetran_deleted,
                         {{convert_date_timezone('_fivetran_synced')}}
                     FROM src_con_no_promo

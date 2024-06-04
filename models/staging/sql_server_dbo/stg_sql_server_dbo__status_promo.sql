@@ -12,7 +12,7 @@ WITH src_promos AS (
 status AS (
     SELECT 
         DISTINCT
-            md5(status) AS status_promo_id,
+        md5(status) AS status_promo_id,
         status 
     FROM src_promos
 )

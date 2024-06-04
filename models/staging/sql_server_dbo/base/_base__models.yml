@@ -7,6 +7,14 @@ models:
         contract:
           enforced: true
     columns: 
+          - name: order_id
+            data_type: varchar
+            constraints:
+            - type: not_null
+          - name: shipping_service
+            data_type: varchar
+            constraints:
+            - type: not_null
           - name: created_at_utc 
             data_type: TIMESTAMP_TZ
             constraints:
@@ -80,11 +88,11 @@ models:
           - name: _fivetran_deleted
             tests:
              - not_null
-            data_type: TIMESTAMP_TZ
+            data_type: boolean
             constraints:
             - type: not_null
             
-          - name: _fivetran_synced
+          - name: _fivetran_synced_utc
             tests:
              - not_null
             data_type: TIMESTAMP_TZ

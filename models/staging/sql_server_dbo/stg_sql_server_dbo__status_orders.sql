@@ -6,7 +6,7 @@
 
 WITH src_orders AS (
     SELECT * 
-    FROM {{ ref('base_sql_server_dbo__orders') }}
+    FROM {{ source('sql_server_dbo', 'orders') }}
     ),
 
 status_orders AS (
