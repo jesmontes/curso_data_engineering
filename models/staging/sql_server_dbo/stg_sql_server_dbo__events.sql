@@ -7,9 +7,9 @@ renamed_casted AS (
     SELECT
          event_id
         ,page_url
-        ,{{upper_first_letter('event_type')}} AS event_type
+        ,event_type
         ,user_id
-        ,NULLIF(product_id,'') AS promo_id
+        ,NULLIF(product_id,'') AS product_id
         ,session_id
         ,{{convert_date_timezone('created_at')}}        
         ,NULLIF(order_id,'') AS order_id
