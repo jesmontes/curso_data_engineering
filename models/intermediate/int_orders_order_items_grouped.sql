@@ -40,7 +40,7 @@ JOIN {{ ref('stg_sql_server_dbo__order_items') }} oi
 ON o.order_id = oi.order_id
 JOIN {{ ref('stg_sql_server_dbo__promos') }} p
 ON o.promo_id = p.promo_id
-JOIN {{ ref('stg_sql_server_dbo_products') }} pr
+JOIN {{ ref('stg_sql_server_dbo__products') }} pr
 ON pr.product_id = oi.product_id
 JOIN count_order_items c
 ON c.order_id = oi.order_id
