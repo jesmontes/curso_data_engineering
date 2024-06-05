@@ -18,13 +18,13 @@ WITH src_orders AS (
             order_id,
             order_total AS order_total_eur,
             md5(COALESCE(NULLIF(promo_id,''),'no_promo')) AS promo_id,
-            --COALESCE(NULLIF(promo_id,''),'no_promo') as descripcion,
+            COALESCE(NULLIF(promo_id,''),'no_promo') as promo_description,
             shipping_cost AS shipping_cost_eur,
             md5(COALESCE(NULLIF(shipping_service,''),'unknown')) AS shipping_service_id,
             COALESCE(NULLIF(shipping_service,''),'unknown') AS shipping_service,
             md5(status) AS status_id,
             --Para casos de documentacion y problemas de busqueda,se puede valorar dejar descripcion y sea mas facil localizarlo
-            --status,
+            status,
             tracking_id, --TODO poner vacios a null
             user_id,
             COALESCE(_fivetran_deleted, false) AS _fivetran_deleted,

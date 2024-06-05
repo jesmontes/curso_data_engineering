@@ -11,10 +11,19 @@ models:
             data_type: varchar
             constraints:
             - type: not_null
+         
+          - name: shipping_service_id
+            tests:
+             - not_null
+            data_type: varchar
+            constraints:
+            - type: not_null
+
           - name: shipping_service
             data_type: varchar
             constraints:
             - type: not_null
+            
           - name: created_at_utc 
             data_type: TIMESTAMP_TZ
             constraints:
@@ -48,7 +57,14 @@ models:
             data_type: varchar
             constraints:
             - type: not_null
-
+          
+          - name: promo_description
+            tests:
+             - not_null
+            data_type: varchar
+            constraints:
+            - type: not_null
+          
           - name: shipping_cost_eur
             tests:
              - not_null
@@ -57,14 +73,14 @@ models:
             constraints:
             - type: not_null 
 
-          - name: shipping_service_id
+          - name: status_id
             tests:
              - not_null
             data_type: varchar
             constraints:
             - type: not_null
 
-          - name: status_id
+          - name: status
             tests:
              - not_null
             data_type: varchar
