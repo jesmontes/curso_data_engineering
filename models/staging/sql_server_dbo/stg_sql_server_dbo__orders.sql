@@ -10,6 +10,7 @@ WITH src_orders AS (
     )
 SELECT 
     order_id
+    ,address_id
     ,shipping_service_id
     ,created_at_utc
     ,delivered_at_utc

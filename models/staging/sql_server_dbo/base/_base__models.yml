@@ -11,6 +11,11 @@ models:
             data_type: varchar
             constraints:
             - type: not_null
+            
+          - name: address_id
+            data_type: varchar
+            constraints:
+            - type: not_null
          
           - name: shipping_service_id
             tests:
@@ -23,7 +28,7 @@ models:
             data_type: varchar
             constraints:
             - type: not_null
-            
+
           - name: created_at_utc 
             data_type: TIMESTAMP_TZ
             constraints:

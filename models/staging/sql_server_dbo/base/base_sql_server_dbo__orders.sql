@@ -16,6 +16,7 @@ WITH src_orders AS (
             {{ convert_date_timezone('estimated_delivery_at')}},
             order_cost AS order_cost_eur,  
             order_id,
+            address_id,
             order_total AS order_total_eur,
             md5(COALESCE(NULLIF(promo_id,''),'no_promo')) AS promo_id,
             COALESCE(NULLIF(promo_id,''),'no_promo') as promo_description,

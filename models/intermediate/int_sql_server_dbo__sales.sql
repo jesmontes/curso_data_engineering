@@ -16,6 +16,7 @@ final_table AS (
 SELECT  
         o.user_id,
         o.order_id,
+        o.address_id,
         o.created_at_utc,
         o.delivered_at_utc,
         oi.product_id,
