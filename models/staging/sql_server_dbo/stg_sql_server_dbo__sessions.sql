@@ -7,7 +7,7 @@ WITH sessions AS (
     MAX(CASE WHEN event_type = 'checkout' THEN created_at_utc END) AS time_checkout,
     MAX(CASE WHEN event_type = 'package_shipped' THEN created_at_utc END) AS time_package_shipped,
     --TIMESTAMPDIFF('minute',MIN(created_at_utc),MAX(created_at_utc)) as duration_session_min 
-    FROM {{ref('stg_sql_server_dbo__events')}}
+    FROM {{ref('base_sql_server_dbo__events')}}
     GROUP BY 1,2
     
 )
