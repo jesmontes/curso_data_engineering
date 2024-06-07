@@ -1,17 +1,18 @@
---FCT SALES QUITANDO CAMPOS INNECESARIOS
+{{
+  config(
+    materialized='table'
+  )
+}}
 
-WITH int_orders_order_items_grouped AS(
-SELECT *
+WITH int_sales AS (
+    SELECT * 
     FROM {{ ref('int_orders_order_items_grouped') }}
-), 
-sales AS (
-SELECT  
-        user_id,
+    )
+SELECT user_id,
         order_id,
         address_id,
-        promo_id,
-        created_at_utc,
-        delivered_at_utc,
+        DATE(created_at_utc) AS created_at_utc,
+        DATE(delivered_at_utc) AS delivered_at_utc,
         product_id,
         quantity,
         price_product_eur,
@@ -19,9 +20,10 @@ SELECT
         shipping_cost_by_item_eur,        
         order_cost_and_shipping_by_item_eur,
         discount_by_item_eur,
-        order_total_by_item,
-        DATEDIFF(DAY,created_at_utc,delivered_at_utc) AS shipping_duration_days
-
-       FROM int_orders_order_items_grouped
-)
-SELECT * FROM sales
+        --((pr.price_eur * oi.quantity) + (o.shipping_cost_eur / c.item_count)) - (p.discount_eur / c.item_count) AS order_total_by_item,       
+        --o.shipping_cost_eur AS shipping_order_cost_eur,        
+        --order_cost_eur,
+        promo_id,
+        --discount_eur AS discount_order_eur,       
+        --order_total_eur
+        FROM int_sales

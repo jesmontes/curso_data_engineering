@@ -12,6 +12,7 @@ renamed as (
         _row,
         quantity,
         month,
+        LEFT(month,7) AS YEAR_MONTH,
         product_id,
         _fivetran_synced
 
