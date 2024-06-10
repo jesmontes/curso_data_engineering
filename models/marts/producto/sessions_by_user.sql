@@ -9,6 +9,10 @@ WITH count_events_by_user_and_session AS (
     joined AS (
         SELECT  a.user_id
                 ,a.session_id
+                --,a.address_id
+                ,a.first_name
+                ,a.last_name
+                ,a.email
                 ,a.first_event_time_utc
                 ,a.last_event_time_utc
                 ,a.checkout_event_time_utc
@@ -26,5 +30,4 @@ WITH count_events_by_user_and_session AS (
                 JOIN count_events_by_user_and_session b
                 ON a.user_id = b.user_id and a.session_id = b.session_id
     )
-    SELECT * FROM joined order by user_id
-
+    SELECT * FROM joined
