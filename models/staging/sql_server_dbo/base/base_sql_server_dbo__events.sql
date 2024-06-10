@@ -5,10 +5,10 @@ WITH src_events AS (
 
 renamed_casted AS (
     SELECT
-         event_id
+        user_id
+        ,event_id
         ,page_url
         ,event_type
-        ,user_id
         ,NULLIF(product_id,'') AS product_id
         ,session_id
         ,{{convert_date_timezone('created_at')}}        

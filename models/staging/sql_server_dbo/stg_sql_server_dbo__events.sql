@@ -5,11 +5,11 @@ WITH base_events AS (
 
 renamed_casted AS (
     SELECT
-         event_id
+        user_id
+        ,event_id
         ,page_url
-        --,event_type
-        ,user_id
-        product_id
+        ,event_type
+        ,product_id
         ,session_id
         ,created_at_utc        
         ,order_id
