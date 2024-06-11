@@ -11,25 +11,24 @@ WITH sales_budget AS (
       SELECT
             LEFT(created_at_utc,7) AS YEAR_MONTH,            
             product_id,
+            price_product_eur,
             SUM(quantity) as quantity                   
             from {{ref("int_orders_order_items_grouped")}}
-            group by 1,2               
+            group by 1,2,3             
  ) ,
- products AS (
-    SELECT  product_id,
-            price_eur
-            FROM {{ref('stg_sql_server_dbo__products')}}
- ),
-
+ 
 joined AS (
- SELECT a.YEAR_MONTH,
-        a.product_id,
-        a.estimated_quantity AS target_quantity,
-        b.quantity AS quantity_sold,
-        b.quantity - a.estimated_quantity AS variance
+ SELECT a.YEAR_MONTH
+        ,a.product_id
+        ,a.estimated_quantity AS target_quantity
+        ,b.quantity AS quantity_sold
+        ,b.quantity - a.estimated_quantity AS variance
+        ,b.quantity * b.price_product_eur AS sales_revenue_eur --ingresos por ventas
+        ,a.estimated_quantity * b.price_product_eur AS target_sales_revenue_eur 
+        ,ROUND((b.quantity / a.estimated_quantity)* 100,0) AS Target_Achievement_Rate --porcentaje de la cantidad vendida con respecto a la cantidad objetivo,
         FROM sales_budget a
         LEFT JOIN int_ord_ord_it b
-        ON a.YEAR_MONTH = b.YEAR_MONTH AND a.product_id = b.product_id              
+        ON a.YEAR_MONTH = b.YEAR_MONTH AND a.product_id = b.product_id          
 )
 
 SELECT * FROM joined 
