@@ -11,8 +11,8 @@ WITH src_orders AS (
 
 status_orders AS (
     SELECT DISTINCT
-        md5(status) AS status_orders_id,
-        status
+        {{dbt_utils.generate_surrogate_key(['status'])}} AS status_orders_id
+        ,status
         FROM src_orders
                         
 )

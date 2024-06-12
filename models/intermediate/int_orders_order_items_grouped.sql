@@ -17,22 +17,21 @@ SELECT
         o.user_id,
         o.order_id,
         o.address_id,
-        o.created_at_utc,
-        o.delivered_at_utc,
+        DATE(o.created_at_utc) AS created_at_utc,
+        LEFT(DATE(o.created_at_utc),7) AS year_month_created_at_utc,
+        DATE(o.delivered_at_utc) AS delivered_at_utc,
         oi.product_id,
         oi.quantity,
         pr.price_eur AS price_product_eur,
-        pr.price_eur*oi.quantity AS order_cost_by_item_eur,
-        o.shipping_cost_eur/c.item_count AS shipping_cost_by_item_eur,        
-        (pr.price_eur*oi.quantity) + (o.shipping_cost_eur/c.item_count) AS order_cost_and_shipping_by_item_eur,
-        p.discount_eur/c.item_count AS discount_by_item_eur,
-        ((pr.price_eur*oi.quantity) + (o.shipping_cost_eur/c.item_count)) - (p.discount_eur/c.item_count) AS order_total_by_item,
-       
+        pr.price_eur * oi.quantity AS order_cost_by_item_eur,
+        o.shipping_cost_eur / c.item_count AS shipping_cost_by_item_eur,        
+        (pr.price_eur * oi.quantity) + (o.shipping_cost_eur/c.item_count) AS order_cost_and_shipping_by_item_eur,
+        p.discount_eur / c.item_count AS discount_by_item_eur,
+        ((pr.price_eur * oi.quantity) + (o.shipping_cost_eur / c.item_count)) - (p.discount_eur / c.item_count) AS order_total_by_item,       
         o.shipping_cost_eur AS shipping_order_cost_eur,        
-        o.order_cost_eur AS order_cost,
+        o.order_cost_eur AS order_cost_eur,
         o.promo_id,
-        p.discount_eur AS discount_order_eur,
-       
+        p.discount_eur AS discount_order_eur,       
         o.order_total_eur 
 FROM
 {{ ref('stg_sql_server_dbo__orders') }} o

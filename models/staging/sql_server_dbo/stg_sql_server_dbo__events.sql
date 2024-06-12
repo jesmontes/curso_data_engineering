@@ -1,21 +1,21 @@
-WITH src_events AS (
+WITH base_events AS (
     SELECT * 
-    FROM {{ source('sql_server_dbo', 'events') }}
+    FROM {{ ref('base_sql_server_dbo__events') }}
     ),
 
 renamed_casted AS (
     SELECT
-         event_id
+        user_id
+        ,event_id
         ,page_url
         ,event_type
-        ,user_id
-        ,NULLIF(product_id,'') AS product_id
+        ,product_id
         ,session_id
-        ,{{convert_date_timezone('created_at')}}        
-        ,NULLIF(order_id,'') AS order_id
-        ,COALESCE(_fivetran_deleted,false) as _fivetran_deleted
-        ,{{convert_date_timezone('_fivetran_synced')}}       
-    FROM src_events
+        ,created_at_utc        
+        ,order_id
+        , _fivetran_deleted
+        ,_fivetran_synced_utc       
+    FROM base_events
     )
 
 SELECT * FROM renamed_casted

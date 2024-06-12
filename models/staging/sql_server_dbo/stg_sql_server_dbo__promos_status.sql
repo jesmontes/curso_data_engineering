@@ -12,7 +12,7 @@ WITH src_promos AS (
 status AS (
     SELECT 
         DISTINCT
-        md5(status) AS status_promo_id,
+        {{dbt_utils.generate_surrogate_key(['status'])}} AS status_promo_id,
         status 
     FROM src_promos
 )
