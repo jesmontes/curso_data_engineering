@@ -3,9 +3,11 @@
 WITH stg_sessions AS (
     SELECT * FROM {{ref('stg_sql_server_dbo__sessions')}}
 ),
+
     stg_users AS (
         SELECT * FROM {{ref('stg_sql_server_dbo__users')}}
     ),
+    
     joined AS (
     SELECT 
         a.user_id,

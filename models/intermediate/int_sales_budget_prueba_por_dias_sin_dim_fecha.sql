@@ -32,11 +32,12 @@ joined AS (
         a.product_id = b.product_id AND
         a.date_day = b.date_day
 )
-SELECT  YEAR(date_day) as anio,
-        MONTH(date_day) as mes,
+SELECT  --YEAR(date_day) as anio,
+        --MONTH(date_day) as mes,
+        date_day,
         product_id,
         SUM(target_quantity),
         SUM(quantity_sold)
 FROM joined
 GROUP BY all
-ORDER BY 1,2,3
+ORDER BY 1,2--,3
